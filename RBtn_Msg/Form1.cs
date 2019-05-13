@@ -11,6 +11,8 @@ namespace RBtn_Msg
 {
     public partial class Form1 : Form
     {
+        private MessageBoxButtons mbb;
+        private MessageBoxIcon mbi;
 
         public Form1()
         {
@@ -22,13 +24,28 @@ namespace RBtn_Msg
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void btnShow_Click(object sender, EventArgs e)
         {
+            if (this.rbOk.Checked)
+                this.mbb = MessageBoxButtons.OK;// [확인] 버튼
+            else if (this.rbOkCancel.Checked)
+                this.mbb = MessageBoxButtons.OKCancel;// [확인/취소] 버튼
+            else if (this.rbYesNo.Checked)
+                this.mbb = MessageBoxButtons.YesNo;// [예/아니오] 버튼
+
+            if (this.rbError.Checked)
+                this.mbi = MessageBoxIcon.Error;// 에러 아이콘
+            else if (this.rbInformation.Checked)
+                this.mbi = MessageBoxIcon.Information;// 정보 아이콘
+            else if (this.rbQuestion.Checked)
+                this.mbi = MessageBoxIcon.Question;// 질문 아이콘
+
+            MessageBox.Show("메시지 박스를 확인하세요", "알림", mbb, mbi);
 
         }
     }
